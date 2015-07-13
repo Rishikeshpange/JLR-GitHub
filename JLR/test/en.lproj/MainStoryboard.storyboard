@@ -1779,7 +1779,7 @@
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="124" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="f6p-Cx-iaB">
                                         <rect key="frame" x="0.0" y="-2" width="568" height="433"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="separatorColor" red="0.0039215686274509803" green="0.20784313725490194" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="separatorInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
@@ -1839,6 +1839,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="MKc-9r-ekk" firstAttribute="top" secondItem="q0T-h9-FZC" secondAttribute="bottom" constant="27" id="1S1-Id-kbh"/>
                                                         <constraint firstItem="a7a-Ba-RyR" firstAttribute="leading" secondItem="q0T-h9-FZC" secondAttribute="trailing" constant="25" id="4wG-xQ-g4C"/>
@@ -1852,6 +1853,7 @@
                                                         <constraint firstItem="a7a-Ba-RyR" firstAttribute="top" secondItem="r0K-7y-MFH" secondAttribute="topMargin" constant="15" id="uVo-yp-5Qp"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <connections>
                                                     <outlet property="lbl_activityType" destination="MKc-9r-ekk" id="Qcb-aw-plu"/>
                                                     <outlet property="lbl_activityid" destination="q0T-h9-FZC" id="Pqf-Mc-8R2"/>
@@ -1867,7 +1869,7 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.031372549020000001" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="433" id="Ah3-Yv-N8K"/>
                                     <constraint firstItem="f6p-Cx-iaB" firstAttribute="leading" secondItem="d6C-m9-4YT" secondAttribute="leading" id="EB5-Kz-LDB"/>

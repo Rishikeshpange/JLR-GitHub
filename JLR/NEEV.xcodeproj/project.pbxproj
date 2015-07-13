@@ -67,6 +67,8 @@
 		ADD78B731B50D268008AAF77 /* jlrlanding.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADD78B721B50D268008AAF77 /* jlrlanding.jpg */; };
 		ADD78B761B51085B008AAF77 /* ManageOpprotunityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD78B751B51085B008AAF77 /* ManageOpprotunityTableViewCell.m */; };
 		ADE1162B1AC40DBD001DD729 /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE1162A1AC40DBD001DD729 /* CreateActivityViewController.m */; };
+		BC25808D1B53E66800DE5C61 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = BC25808A1B53E66800DE5C61 /* SSKeychain.m */; };
+		BC25808E1B53E66800DE5C61 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = BC25808C1B53E66800DE5C61 /* SSKeychainQuery.m */; };
 		D9D108D21B51356200271C1E /* jagaur-car.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9D108D11B51356200271C1E /* jagaur-car.jpg */; };
 		D9D108D71B51395D00271C1E /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D108D31B51395D00271C1E /* mail.png */; };
 		D9D108D81B51395D00271C1E /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D108D41B51395D00271C1E /* lock.png */; };
@@ -160,6 +162,10 @@
 		ADD78B751B51085B008AAF77 /* ManageOpprotunityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageOpprotunityTableViewCell.m; sourceTree = "<group>"; };
 		ADE116291AC40DBD001DD729 /* CreateActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityViewController.h; sourceTree = "<group>"; };
 		ADE1162A1AC40DBD001DD729 /* CreateActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityViewController.m; sourceTree = "<group>"; };
+		BC2580891B53E66800DE5C61 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		BC25808A1B53E66800DE5C61 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		BC25808B1B53E66800DE5C61 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		BC25808C1B53E66800DE5C61 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		D9D108D11B51356200271C1E /* jagaur-car.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "jagaur-car.jpg"; sourceTree = "<group>"; };
 		D9D108D31B51395D00271C1E /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
 		D9D108D41B51395D00271C1E /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
@@ -286,6 +292,10 @@
 			children = (
 				84D764741AA44E24008C1244 /* LoginViewController.h */,
 				84D764751AA44E24008C1244 /* LoginViewController.m */,
+				BC2580891B53E66800DE5C61 /* SSKeychain.h */,
+				BC25808A1B53E66800DE5C61 /* SSKeychain.m */,
+				BC25808B1B53E66800DE5C61 /* SSKeychainQuery.h */,
+				BC25808C1B53E66800DE5C61 /* SSKeychainQuery.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -509,7 +519,9 @@
 				ADE1162B1AC40DBD001DD729 /* CreateActivityViewController.m in Sources */,
 				845BA76D1AB8432F006DFB9C /* ActivityListViewController.m in Sources */,
 				84E339451AB4A6DD009D6040 /* ActivityViewController.m in Sources */,
+				BC25808E1B53E66800DE5C61 /* SSKeychainQuery.m in Sources */,
 				84D764761AA44E24008C1244 /* LoginViewController.m in Sources */,
+				BC25808D1B53E66800DE5C61 /* SSKeychain.m in Sources */,
 				ADD78B761B51085B008AAF77 /* ManageOpprotunityTableViewCell.m in Sources */,
 				15B29A5416E8E01900772375 /* DetailViewController.m in Sources */,
 				ADBB8A071ABBED3F0004CC8C /* ManageOpportunity.m in Sources */,

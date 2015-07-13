@@ -10,10 +10,13 @@
 #import "AppDelegate.h"
 #import "RequestDelegate.h"
 #import "TBXML.h"
+#import "SSKeychain.h"
+#import "SSKeychainQuery.h"
 
 @interface LoginViewController ()
 {
     NSString *userName,*passWord;
+    NSString *usernameStrng,*passwordString;
 }
 @end
 
@@ -34,8 +37,8 @@
     NSLog(@"login..");
     [super viewDidLoad];
     
-    self.username.text=@"SJAIN_10102";
-    self.password.text=@"HPY151NWYR";
+  //  self.username.text=@"SJAIN_10102";
+ //   self.password.text=@"HPY151NWYR";
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.username.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) cornerRadii:CGSizeMake(5.0, 5.0)];
      UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.password.bounds byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight) cornerRadii:CGSizeMake(5.0, 5.0)];
     
@@ -111,6 +114,14 @@
     self.LoginButton.layer.cornerRadius = 8; // this value vary as per your desire
     self.LoginButton.clipsToBounds = YES;
     self.LoginButton.backgroundColor=[UIColor colorWithRed:24/255.0f green:178/255.0f blue:175/255.0f alpha:1];
+    
+    
+    
+  usernameStrng = [SSKeychain passwordForService:@"AnyService" account:@"AnyUser"];
+ passwordString = [SSKeychain passwordForService:@"AnyService" account:@"AnyUser1"];
+    
+    self.username.text=usernameStrng;
+    self.password.text=passwordString;
     
     // Do any additional setup after loading the view.
     // Do any additional setup after loading the view.
@@ -277,7 +288,7 @@
     NSString *response=[[notification userInfo]objectForKey:@"response"];
     NSLog(@"\nResponse....%@",response);
     
-    TBXML * tbxml = [TBXML newTBXMLWithXMLString:response error:&err];
+   // TBXML * tbxml = [TBXML newTBXMLWithXMLString:response error:&err];
     
     if ([response rangeOfString:@"SOAP-ENV:Fault"].location != NSNotFound )
     {
@@ -302,6 +313,13 @@
           NSLog(@"\nResponse....%@",response);
         
     }
+}
+- (IBAction)btnRemrmber:(id)sender {
+    
+    [SSKeychain setPassword:self.username.text forService:@"AnyService" account:@"AnyUser"];
+    [SSKeychain setPassword:self.password.text forService:@"AnyService" account:@"AnyUser1"];
+    
+    
 }
 
 

@@ -70,7 +70,6 @@
     
     self.username.leftViewMode = UITextFieldViewModeAlways;
     self.username.leftView = usernameIconContainer;
-    
     self.username.textAlignment = NSTextAlignmentLeft;
     
     
@@ -245,7 +244,10 @@
 -(void)callAuthentication
 {
 //    SJAIN_10102
-    NSLog(@"\n\n ");
+    NSLog(@"\n\n ");//Abhishek
+    
+    NSLog(@"\n User Name %@ ,\n Password : %@",self.username.text,self.password.text);//Abhishek
+    
     NSString *envelopeText = [NSString stringWithFormat:
                               @"<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:asi=\"http://siebel.com/asi/\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\">"
                               @"<soapenv:Header>"

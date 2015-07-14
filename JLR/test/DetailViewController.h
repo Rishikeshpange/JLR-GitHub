@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XYPieChart.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, XYPieChartDataSource, XYPieChartDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, XYPieChartDataSource, XYPieChartDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 {
     NSMutableArray *testArray;
@@ -49,6 +49,10 @@
 - (IBAction)btnopenleads:(id)sender;
 
 
+@property (assign) CGPoint originalCenter;
+
+
+@property (weak, nonatomic) IBOutlet UITextField *searchleadTxtfld;
 
 
 @end

@@ -56,7 +56,8 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButtonItems];
     
-
+    
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:(86/255.0) green:(107/255.0) blue:(112/255.0) alpha:1]];
 
     //a=15;
     // Do any additional setup after loading the view.
@@ -73,7 +74,7 @@
 -(void)logOut_btn
 {
     // flag=true;
-    alert = [[UIAlertView alloc] initWithTitle:@"NEEV"
+    alert = [[UIAlertView alloc] initWithTitle:@"JLR"
                                        message:@"Do you want to Log out"
                                       delegate:self
                              cancelButtonTitle:@"No"
@@ -112,10 +113,10 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (indexPath.row == 0 || indexPath.row == ([indexPath length]-1))
     {
-        cell.layer.cornerRadius = 10;
+        cell.layer.cornerRadius = 0;
         
     }
-    cell.layer.cornerRadius = 10;
+    cell.layer.cornerRadius = 0;
     
     // Remove seperator inset
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -131,21 +132,20 @@
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
-    UIView *bgColorView = [[UIView alloc] init];
-    [bgColorView setBackgroundColor:[UIColor redColor]];
-    bgColorView.layer.cornerRadius = 10;
+    
     // [cell setSelectedBackgroundView:bgColorView];
     // [bgColorView release];
     
-    cell.backgroundColor = [UIColor colorWithRed:(1/255.0) green:(31/255.0) blue:(65/255.0) alpha:1] ;
+    cell.backgroundColor = [UIColor colorWithRed:(30/255.0) green:(39/255.0) blue:(46/255.0) alpha:1] ;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
     cell.textLabel.textColor=[UIColor colorWithRed:(216/255.0) green:(218/255.0) blue:(221/255.0) alpha:1];
     //  cell.textLabel.highlightedTextColor = [UIColor colorWithRed:(0/255.0) green:(13/255.0) blue:(65/255.0) alpha:1];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds] ;
     //  cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(178/255.0) green:(183/255.0) blue:(63/255.0) alpha:1];
     
-    cell.selectedBackgroundView=bgColorView;
     
+    
+
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -164,22 +164,23 @@
     return cell;*/
     
     if (tableView == self.tableView) {
-        static NSString *MyIdentifier = @"TodaysActivitiesViewCellIdentifier";
         
-        dashboardTodaysActivity_Cell_VC *cell = [self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        
+        
+        static NSString *MyIdentifier = @"activitiesidentifier";
+        
+        dasboard_Email_tableCell_VC *cell = [self.tableView dequeueReusableCellWithIdentifier:MyIdentifier];
         
         if (cell == nil)
         {
-            cell = [[dashboardTodaysActivity_Cell_VC alloc] initWithStyle:UITableViewCellStyleDefault
+            cell = [[dasboard_Email_tableCell_VC  alloc] initWithStyle:UITableViewCellStyleDefault
                                                           reuseIdentifier:MyIdentifier];
         }
-        //cell.lbl_customer.text = @"CUSTOMER NAME";
-        //cell.lbl_CustomerName.text = @"VIRAT KOHLI";
-        //cell.lbl_opty.text = @"OPPORTUNITY ID";
-        //cell.lbl_OptyId.text = @"1234-D768";
-       // cell.optyCounter.text=@"4";
-        
-     //   cell.backgroundColor = [UIColor clearColor];
+        cell.lbl_activityid.text = @"Activity id";
+    cell.lbl_activityidresult.text = @"VAT454KO";
+        cell.lbl_activityType.text = @"Activity Type";
+        cell.lbl_activitytyperesult.text = @"Test Drive";
+      
         return cell;
     }
     /*

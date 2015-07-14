@@ -26,13 +26,13 @@
 @synthesize pieChartLeft = _pieChartCopy;
 NSMutableArray *testArray;
 NSMutableArray *testLeadsArray;
-
+NSString *leadsState;
 int *flag;
 
 //  @synthesize pieChartLeft = _pieChartCopy;
 @synthesize todaysActivities_TV;
 
-@synthesize Leads_TV;
+@synthesize Leads_TV,searchleadTxtfld;
 @synthesize percentageLabel = _percentageLabel;
 #pragma mark - Managing the detail item
 
@@ -40,7 +40,7 @@ int *flag;
 {
     [super viewDidLoad];
     
-    flag = 0;
+    leadsState=@"all";
 
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header_strip.png"] forBarMetrics:UIBarMetricsDefault];
 
@@ -61,9 +61,10 @@ int *flag;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButtonItems];
     
+    self.originalCenter = self.view.center;
+    searchleadTxtfld.delegate=self;
     
-    
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
     
     
     
@@ -205,7 +206,7 @@ int *flag;
 -(void)logOut_btn
 {
    // flag=true;
-    alert = [[UIAlertView alloc] initWithTitle:@"NEEV"
+    alert = [[UIAlertView alloc] initWithTitle:@"JLR"
                                        message:@"Do you want to Log out"
                                       delegate:self
                              cancelButtonTitle:@"No"
@@ -227,10 +228,7 @@ int *flag;
             LoginViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             //[self.navigationController pushViewController:secondViewController animated:YES];
             [self presentViewController:secondViewController animated:YES completion:nil ];
-          //  [self.navigationController popToRootViewControllerAnimated:TRUE];
-            // [self dismissViewControllerAnimated:YES completion:nil];
-           //  [self.parentViewController.navigationController popToRootViewControllerAnimated:YES];
-          //  [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+       
         }
 }
 #pragma mark - Split view
@@ -344,24 +342,29 @@ int *flag;
         }
         
         
-        if (flag==0) {
+        if ([leadsState isEqualToString:@"all"]) {
             cell.lbl_leadName.text = @"Warm Lead";
             cell.lbl_leadSummary.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  ";
             cell.backgroundColor = [UIColor clearColor];
             return cell;
-
+            
+            
+            
         }
-        else if (flag==1) {
-        cell.lbl_leadName.text = @"Cold Lead";
-        cell.lbl_leadSummary.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  ";
-        cell.backgroundColor = [UIColor clearColor];
-        return cell;
+        else if ([leadsState isEqualToString:@"open"]) {
+            cell.lbl_leadName.text = @"Open Lead";
+            cell.lbl_leadSummary.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  ";
+            cell.backgroundColor = [UIColor clearColor];
+            return cell;
+            
         }
-        else if (flag==2){
+        else if ([leadsState isEqualToString:@"assigned"]){
             cell.lbl_leadName.text = @"Assigned Lead";
             cell.lbl_leadSummary.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  ";
             cell.backgroundColor = [UIColor clearColor];
             return cell;
+            
+            
         }
         
         
@@ -380,37 +383,103 @@ int *flag;
 
 
 
-
-
 - (IBAction)btnallleads:(id)sender {
     
-    flag =1;
+    leadsState=@"all";
+    
+    NSLog(@"state %@",leadsState);
     
     self.allleads.backgroundColor=[UIColor colorWithRed:21/255.0 green:183/255.0 blue:174/255.0 alpha:1];
     
     self.openleads.backgroundColor=[UIColor clearColor];
     
     self.leadsassigned.backgroundColor=[UIColor clearColor];
+    
+    [Leads_TV reloadData];
 }
 
 - (IBAction)btnleadsassigned:(id)sender {
-    flag=2;
     
+    
+    leadsState=@"assigned";
+    
+    NSLog(@"state %@",leadsState);
     self.leadsassigned.backgroundColor=[UIColor colorWithRed:21/255.0 green:183/255.0 blue:174/255.0 alpha:1];
     
     self.openleads.backgroundColor=[UIColor clearColor];
     
     self.allleads.backgroundColor=[UIColor clearColor];
+    
+    [Leads_TV reloadData];
 }
 
 - (IBAction)btnopenleads:(id)sender {
-   
-    flag=0;
+    
+    leadsState=@"open";
+    
+    
+    NSLog(@"state %@",leadsState);
+    
+    
     
     self.openleads.backgroundColor=[UIColor colorWithRed:21/255.0 green:183/255.0 blue:174/255.0 alpha:1];
     
     self.allleads.backgroundColor=[UIColor clearColor];
     
     self.leadsassigned.backgroundColor=[UIColor clearColor];
+    
+    [Leads_TV  reloadData];
 }
+
+
+
+-(void)textFieldDidBeginEditing:(UITextField *)sender
+{
+    if ([sender isEqual:searchleadTxtfld])
+    {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.1];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        self.view.center = CGPointMake(self.view.center.x,80.0);
+        [UIView commitAnimations];
+    }
+    
+}
+-(void)keyboardWillHide {
+    
+    
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.1];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    self.view.center =  CGPointMake(self.view.center.x, 385.0);
+    [UIView commitAnimations];
+    
+}
+
+- (void)keyboardDidShow:(NSNotification *)note
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+    [UIView setAnimationCurve:[note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    
+    self.view.center = CGPointMake(self.view.center.x, 100.0);
+    [UIView commitAnimations];
+}
+
+- (void)keyboardDidHide:(NSNotification *)note
+{
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+    [UIView setAnimationCurve:[note.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    self.view.center =  CGPointMake(self.view.center.x, self.originalCenter.y);
+    [UIView commitAnimations];
+    
+}
+
 @end

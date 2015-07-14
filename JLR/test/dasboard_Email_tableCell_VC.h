@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface dasboard_Email_tableCell_VC : UITableViewCell
-{
-    
-}
 
-@property (weak, nonatomic) IBOutlet UILabel *lbl_readMail;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_activityid;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_activityType;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_activityidresult;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_activitytyperesult;
+
+
 
 
 @end

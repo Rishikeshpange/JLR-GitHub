@@ -12,6 +12,7 @@
 #import "ActivityListViewController.h"
 #import "LoginViewController.h"
 #import "ManageOpportunity.h"
+#import "ManageOpprotunityTableViewCell.h"
 
 @interface ManageOpportunity ()
 
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+     [self.manageTableView setSeparatorColor:[UIColor colorWithRed:(86/255.0) green:(107/255.0) blue:(112/255.0) alpha:1]];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
 
@@ -50,6 +53,10 @@
     
 
     // Do any additional setup after loading the view.
+    
+    //[self.manageTableView]
+    
+    
 }
 
 
@@ -59,7 +66,7 @@
 }
 -(void)logOut_btn
 {
-    alert = [[UIAlertView alloc] initWithTitle:@"NEEV"
+    alert = [[UIAlertView alloc] initWithTitle:@"JLR"
                                        message:@"Do you want to Log out"
                                       delegate:self
                              cancelButtonTitle:@"No"
@@ -96,6 +103,178 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return 10;
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (indexPath.row == 0 || indexPath.row == ([indexPath length]-1))
+    {
+        cell.layer.cornerRadius = 0;
+        
+    }
+    cell.layer.cornerRadius = 0;
+    
+    // Remove seperator inset
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    // Prevent the cell from inheriting the Table View's margin settings
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    
+    // Explictly set your cell's layout margins
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    // [cell setSelectedBackgroundView:bgColorView];
+    // [bgColorView release];
+    
+    cell.backgroundColor = [UIColor colorWithRed:(30/255.0) green:(39/255.0) blue:(46/255.0) alpha:1] ;
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+    cell.textLabel.textColor=[UIColor colorWithRed:(216/255.0) green:(218/255.0) blue:(221/255.0) alpha:1];
+    //  cell.textLabel.highlightedTextColor = [UIColor colorWithRed:(0/255.0) green:(13/255.0) blue:(65/255.0) alpha:1];
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds] ;
+    //  cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(178/255.0) green:(183/255.0) blue:(63/255.0) alpha:1];
+    
+    
+    
+    
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    /*
+     static NSString *simpleTableIdentifier = @"SimpleTableCell";
+     
+     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+     if (cell == nil) {
+     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+     cell.layer.cornerRadius = 10;
+     
+     }
+     //cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
+     // cell.imageView.image = [UIImage imageNamed:@"creme_brelee.jpg"];
+     
+     return cell;*/
+    
+    if (tableView == self.manageTableView) {
+        
+        
+        
+        static NSString *MyIdentifier = @"managecell";
+        
+        ManageOpprotunityTableViewCell *cell = [self.manageTableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[ManageOpprotunityTableViewCell  alloc] initWithStyle:UITableViewCellStyleDefault
+                                                       reuseIdentifier:MyIdentifier];
+        }
+        cell.lbl_LeadId.text = @"Lead id :";
+        cell.lbl_LeadIdResult.text = @"VAT454KO";
+        cell.lbl_LeadCreationDate.text = @"Lead Creation Date :";
+        cell.lbl_LeadCreationDateResult.text = @"11-july-2015";
+        
+        cell.lbl_ProductName.text = @"Product Name :";
+        cell.lbl_Product_NameResult.text = @"F-PACE";
+        
+        return cell;
+    }
+    /*
+     if (tableView == self.Leads_TV) {
+     
+     static NSString *MyIdentifier = @"LeadsIdentifier";
+     Dashboard_Leads_tablecell_VC *cell = [self.Leads_TV dequeueReusableCellWithIdentifier:MyIdentifier];
+     
+     if (cell == nil)
+     {
+     cell = [[Dashboard_Leads_tablecell_VC alloc] initWithStyle:UITableViewCellStyleDefault
+     reuseIdentifier:MyIdentifier];
+     }
+     
+     cell.lbl_leadName.text = @"Warm Lead";
+     cell.lbl_leadSummary.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, ";
+     cell.backgroundColor = [UIColor clearColor];
+     return cell;
+     }*/
+    return 0;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    /*
+     switch (indexPath.section) {
+     case 0:
+     switch (indexPath.row) {
+     case 0:
+     {
+     [self performSegueWithIdentifier:@"showActivity" sender:[tableView cellForRowAtIndexPath:indexPath]];
+     NSLog(@"Products");
+     
+     }
+     break;
+     case 1:
+     {
+     [self performSegueWithIdentifier:@"showActivity" sender:[tableView cellForRowAtIndexPath:indexPath]];
+     
+     NSLog(@"Stores");
+     }
+     break;
+     case 2:
+     {
+     [self performSegueWithIdentifier:@"showActivity" sender:[tableView cellForRowAtIndexPath:indexPath]];
+     
+     NSLog(@"Packages");
+     }
+     break;
+     case 3:
+     {
+     [self performSegueWithIdentifier:@"showActivity" sender:[tableView cellForRowAtIndexPath:indexPath]];
+     
+     NSLog(@"Finances");
+     
+     break;
+     }
+     case 4:
+     {
+     [self performSegueWithIdentifier:@"showActivity" sender:[tableView cellForRowAtIndexPath:indexPath]];
+     
+     NSLog(@"Finances");
+     
+     break;
+     }
+     
+     case 5:
+     {
+     [self performSegueWithIdentifier:@"showActivity" sender:[tableView cellForRowAtIndexPath:indexPath]];
+     
+     NSLog(@"Finances");
+     
+     break;
+     }
+     case 6:
+     {
+     [self performSegueWithIdentifier:@"showActivity" sender:[tableView cellForRowAtIndexPath:indexPath]];
+     
+     NSLog(@"Finances");
+     
+     break;
+     }
+     break;
+     default:
+     break;
+     }
+     }*/
+}
+
+
 
 /*
 #pragma mark - Navigation

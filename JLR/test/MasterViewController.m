@@ -116,18 +116,18 @@ UILabel *mainLabel;
     {
         cell.userInteractionEnabled = NO;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        cell.imageView.layer.cornerRadius = self.profileImageView.frame.size.width /6;
-        cell.imageView.layer.borderWidth=3.0f;
-        cell.imageView.layer.borderColor=[UIColor grayColor].CGColor;
-        cell.imageView.clipsToBounds = YES;
-        cell.imageView.image = [UIImage imageNamed:@"creme_brelee.jpg"];
-        mainLabel= [[UILabel alloc] initWithFrame:CGRectMake(40.0, -15.0, 115.0,160.0)] ;
-        mainLabel.text=@"   M K SHARMA";
+       // cell.imageView.layer.cornerRadius = self.profileImageView.frame.size.width /5;
+      //  cell.imageView.layer.borderWidth=3.0f;
+      //  cell.imageView.layer.borderColor=[UIColor grayColor].CGColor;
+      //  cell.imageView.clipsToBounds = YES;
+        cell.imageView.image = [UIImage imageNamed:@"icon_1.png"];
+        mainLabel= [[UILabel alloc] initWithFrame:CGRectMake(60.0, -15.0, 115.0,160.0)] ;
+        mainLabel.text=@"M K SHARMA";
         //        cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
         mainLabel.font=[UIFont boldSystemFontOfSize:15];
         mainLabel.font = [UIFont systemFontOfSize:16.0];
         mainLabel.textAlignment = NSTextAlignmentRight;
-        mainLabel.textColor =[UIColor colorWithRed:(216/255.0) green:(218/255.0) blue:(221/255.0) alpha:1];
+        mainLabel.textColor =[UIColor colorWithRed:(218/255.0) green:(218/255.0) blue:(221/255.0) alpha:1];
         [cell.contentView addSubview:mainLabel];
         
     }
@@ -150,8 +150,8 @@ UILabel *mainLabel;
     if(indexPath.row==0)
     {
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        cell.imageView.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, 100, 100);
-        cell.textLabel.textColor=[UIColor colorWithRed:(178/255.0) green:(183/255.0) blue:(64/255.0) alpha:1];
+       // cell.imageView.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y, 100, 100);
+        cell.textLabel.textColor=[UIColor colorWithRed:(2/255.0) green:(189/255.0) blue:(188/255.0) alpha:1];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
         cell.backgroundColor = [UIColor colorWithRed:(31/255.0) green:(39/255.0) blue:(48/255.0) alpha:1];
     }
@@ -184,7 +184,7 @@ UILabel *mainLabel;
         cell.userInteractionEnabled = YES;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         NSLog(@"..");
-        cell.imageView.image = [UIImage imageNamed:@"Dummy.jpg"];
+        cell.imageView.image = [UIImage imageNamed:@"icon_1.png"];
         DetailViewController * dvc1 = [self.storyboard instantiateViewControllerWithIdentifier:@"view1"];
         self.splitViewController.viewControllers = [NSArray arrayWithObjects:[self.splitViewController.viewControllers objectAtIndex:0],dvc1,nil];
         self.splitViewController.delegate = dvc1;

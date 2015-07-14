@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ManageOpportunity : UIViewController
+@interface ManageOpportunity : UIViewController <UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *manageTableView;
+
 
 @end

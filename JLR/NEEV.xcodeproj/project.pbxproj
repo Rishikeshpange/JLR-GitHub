@@ -63,6 +63,9 @@
 		AD3540EE1AC5595800396A43 /* textlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD3540E71AC5595800396A43 /* textlist@2x.png */; };
 		ADBB8A071ABBED3F0004CC8C /* ManageOpportunity.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBB8A061ABBED3F0004CC8C /* ManageOpportunity.m */; };
 		ADBB8A0A1ABBF27C0004CC8C /* SearchOpprtunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBB8A091ABBF27C0004CC8C /* SearchOpprtunityViewController.m */; };
+		ADD037ED1B512DBA00271954 /* icon_1.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD037EC1B512DBA00271954 /* icon_1.png */; };
+		ADD78B731B50D268008AAF77 /* jlrlanding.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADD78B721B50D268008AAF77 /* jlrlanding.jpg */; };
+		ADD78B761B51085B008AAF77 /* ManageOpprotunityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD78B751B51085B008AAF77 /* ManageOpprotunityTableViewCell.m */; };
 		ADE1162B1AC40DBD001DD729 /* CreateActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE1162A1AC40DBD001DD729 /* CreateActivityViewController.m */; };
 		D9D108D21B51356200271C1E /* jagaur-car.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9D108D11B51356200271C1E /* jagaur-car.jpg */; };
 		D9D108D71B51395D00271C1E /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D108D31B51395D00271C1E /* mail.png */; };
@@ -148,6 +151,10 @@
 		ADBB8A061ABBED3F0004CC8C /* ManageOpportunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManageOpportunity.m; path = ../ManageOpportunity.m; sourceTree = "<group>"; };
 		ADBB8A081ABBF27C0004CC8C /* SearchOpprtunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOpprtunityViewController.h; sourceTree = "<group>"; };
 		ADBB8A091ABBF27C0004CC8C /* SearchOpprtunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOpprtunityViewController.m; sourceTree = "<group>"; };
+		ADD037EC1B512DBA00271954 /* icon_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_1.png; sourceTree = "<group>"; };
+		ADD78B721B50D268008AAF77 /* jlrlanding.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jlrlanding.jpg; sourceTree = "<group>"; };
+		ADD78B741B51085B008AAF77 /* ManageOpprotunityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageOpprotunityTableViewCell.h; sourceTree = "<group>"; };
+		ADD78B751B51085B008AAF77 /* ManageOpprotunityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageOpprotunityTableViewCell.m; sourceTree = "<group>"; };
 		ADE116291AC40DBD001DD729 /* CreateActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateActivityViewController.h; sourceTree = "<group>"; };
 		ADE1162A1AC40DBD001DD729 /* CreateActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateActivityViewController.m; sourceTree = "<group>"; };
 		D9D108D11B51356200271C1E /* jagaur-car.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "jagaur-car.jpg"; sourceTree = "<group>"; };
@@ -175,6 +182,8 @@
 		15B29A2516E8E01900772375 = {
 			isa = PBXGroup;
 			children = (
+				ADD78B741B51085B008AAF77 /* ManageOpprotunityTableViewCell.h */,
+				ADD78B751B51085B008AAF77 /* ManageOpprotunityTableViewCell.m */,
 				AD3540DC1AC5270200396A43 /* ActivitySearchViewController.h */,
 				AD3540DD1AC5270200396A43 /* ActivitySearchViewController.m */,
 				ADE116291AC40DBD001DD729 /* CreateActivityViewController.h */,
@@ -331,6 +340,8 @@
 				D9D108D31B51395D00271C1E /* mail.png */,
 				D9D108D41B51395D00271C1E /* lock.png */,
 				D9D108D51B51395D00271C1E /* lock@2x.png */,
+				ADD78B721B50D268008AAF77 /* jlrlanding.jpg */,
+				ADD037EC1B512DBA00271954 /* icon_1.png */,
 				D9D108D61B51395D00271C1E /* mail@2x.png */,
 				D9D108D11B51356200271C1E /* jagaur-car.jpg */,
 				84F0AA991AADC0DE0000324D /* icon_lead_2.png */,
@@ -378,6 +389,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = LetsIDev;
+				TargetAttributes = {
+					15B29A2F16E8E01900772375 = {
+						DevelopmentTeam = 3NTJSR9TZ7;
+					};
+				};
 			};
 			buildConfigurationList = 15B29A2A16E8E01900772375 /* Build configuration list for PBXProject "NEEV" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -427,6 +443,7 @@
 				842D4DAD1AA6333B0049D5FA /* creme_brelee.jpg in Resources */,
 				D9D108D21B51356200271C1E /* jagaur-car.jpg in Resources */,
 				AD3540E81AC5595800396A43 /* header_icon_3@2x.png in Resources */,
+				ADD78B731B50D268008AAF77 /* jlrlanding.jpg in Resources */,
 				84E339421AB433EE009D6040 /* icon_scroll.png in Resources */,
 				AD3540EB1AC5595800396A43 /* header_tml_logo@2x.png in Resources */,
 				AD3540EC1AC5595800396A43 /* textbox_icon_1@2x.png in Resources */,
@@ -434,6 +451,7 @@
 				D9D108DA1B51395D00271C1E /* mail@2x.png in Resources */,
 				84F0AA9A1AADC0DE0000324D /* icon_lead_2.png in Resources */,
 				84E265E11AB1EE9D007A37BB /* Dummy.jpg in Resources */,
+				ADD037ED1B512DBA00271954 /* icon_1.png in Resources */,
 				84B76AE71AB42A4E00CF840B /* 2.2.jpg in Resources */,
 				84E265EB1AB21C2B007A37BB /* icon_logout.png in Resources */,
 				D9D108D81B51395D00271C1E /* lock.png in Resources */,
@@ -466,6 +484,7 @@
 				845BA76D1AB8432F006DFB9C /* ActivityListViewController.m in Sources */,
 				84E339451AB4A6DD009D6040 /* ActivityViewController.m in Sources */,
 				84D764761AA44E24008C1244 /* LoginViewController.m in Sources */,
+				ADD78B761B51085B008AAF77 /* ManageOpprotunityTableViewCell.m in Sources */,
 				15B29A5416E8E01900772375 /* DetailViewController.m in Sources */,
 				ADBB8A071ABBED3F0004CC8C /* ManageOpportunity.m in Sources */,
 				84D7646D1AA441A3008C1244 /* CreateOpportunityViewController.m in Sources */,
@@ -550,6 +569,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "test/NEEV-Prefix.pch";
 				INFOPLIST_FILE = "test/NEEV-Info.plist";
@@ -567,6 +587,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "test/NEEV-Prefix.pch";
 				INFOPLIST_FILE = "test/NEEV-Info.plist";

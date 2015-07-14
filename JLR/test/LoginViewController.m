@@ -31,12 +31,30 @@
     NSLog(@"login..");
     [super viewDidLoad];
     
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.username.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) cornerRadii:CGSizeMake(5.0, 5.0)];
+     UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.password.bounds byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight) cornerRadii:CGSizeMake(5.0, 5.0)];
+    
+    
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.view.bounds;
+    maskLayer.path  = maskPath.CGPath;
+    
+    
+    CAShapeLayer *maskLayer1 = [[CAShapeLayer alloc] init];
+    maskLayer1.frame = self.view.bounds;
+   
+    maskLayer1.path =maskPath1.CGPath;
+    self.username.layer.mask = maskLayer;
+    self.password.layer.mask = maskLayer1;
+    
+    
     [self.username setBackgroundColor:[UIColor colorWithRed:14/255.0f green:26/255.0f blue:43/255.0f alpha:1]];
     [self.username.layer setBorderColor:[UIColor blackColor].CGColor];
-    [self.username.layer setBorderWidth:2.0];
+    [self.username.layer setBorderWidth:1.0];
     [self.username.layer setCornerRadius:0.0f];
     
-    UIImageView* usernameIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(9, 9, 24, 24)];
+    UIImageView* usernameIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(11, 12, 20, 14)];
     usernameIconImage.image = [UIImage imageNamed:@"mail"];
     UIView* usernameIconContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 39, 39)];
     //usernameIconContainer.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
@@ -47,6 +65,10 @@
     self.username.leftView = usernameIconContainer;
     
     self.username.textAlignment = NSTextAlignmentLeft;
+    
+    
+    
+    
     
     if ([self.username respondsToSelector:@selector(setAttributedPlaceholder:)]) {
         UIColor *color = [UIColor whiteColor];
@@ -59,10 +81,10 @@
     
     [self.password setBackgroundColor:[UIColor colorWithRed:14/255.0f green:26/255.0f blue:43/255.0f alpha:1]];
     [self.password.layer setBorderColor:[UIColor blackColor].CGColor];
-    [self.password.layer setBorderWidth:2.0];
+    [self.password.layer setBorderWidth:1.0];
     [self.password.layer setCornerRadius:0.0f];
     
-    UIImageView* passwordIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(9, 9, 24, 24)];
+    UIImageView* passwordIconImage = [[UIImageView alloc] initWithFrame:CGRectMake(11, 12, 20, 17)];
     passwordIconImage.image = [UIImage imageNamed:@"lock"];
     UIView* passwordIconContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 39, 39)];
 //    passwordIconContainer.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];

@@ -8,6 +8,9 @@
 
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "RequestDelegate.h"
+#import "TBXML.h"
+
 @interface LoginViewController ()
 {
     NSString *userName,*passWord;
@@ -31,7 +34,8 @@
     NSLog(@"login..");
     [super viewDidLoad];
     
-    
+    self.username.text=@"SJAIN_10102";
+    self.password.text=@"HPY151NWYR";
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.username.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) cornerRadii:CGSizeMake(5.0, 5.0)];
      UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.password.bounds byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight) cornerRadii:CGSizeMake(5.0, 5.0)];
     
@@ -112,6 +116,18 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(Authetication_Found:) name:@"authenticationFound" object:nil];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"authenticationFound" object:nil];//abhishek // For opportunity Count
+        
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -134,7 +150,9 @@
     NSLog(@"Username : - %@",userName);
     NSLog(@"Password : - %@",passWord);
     
-    /*
+    [self callAuthentication];
+    
+       /*
      
      NSLog(@"PostData: %@",post);
 
@@ -196,20 +214,95 @@
     ad.authenticated = YES;
     [self dismissViewControllerAnimated:NO completion:nil];
     */
-    AppDelegate* app_delegate=[[UIApplication sharedApplication] delegate];
-    //    //self.window = [[UIApplication sharedApplication] keyWindow];
-    //   // app_delegate.window.rootViewController= app_delegate.splitViewController;
-    //      [self.navigationController pushViewController:app_delegate.splitViewController animated:YES];
-    //
-    //    AppDelegate* app_delegate=[[UIApplication sharedApplication] delegate];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    UISplitViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SplitView"];
-    //self.window = [[UIApplication sharedApplication] keyWindow];
-    app_delegate.window.rootViewController= vc;
+//    AppDelegate* app_delegate=[[UIApplication sharedApplication] delegate];
+//    //    //self.window = [[UIApplication sharedApplication] keyWindow];
+//    //   // app_delegate.window.rootViewController= app_delegate.splitViewController;
+//    //      [self.navigationController pushViewController:app_delegate.splitViewController animated:YES];
+//    //
+//    //    AppDelegate* app_delegate=[[UIApplication sharedApplication] delegate];
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+//    UISplitViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SplitView"];
+//    //self.window = [[UIApplication sharedApplication] keyWindow];
+//    app_delegate.window.rootViewController= vc;
 
     
 
    // [self dismissViewControllerAnimated:NO completion:nil];
 }
+
+-(void)callAuthentication
+{
+//    SJAIN_10102
+    NSLog(@"\n\n ");
+    NSString *envelopeText = [NSString stringWithFormat:
+                              @"<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:asi=\"http://siebel.com/asi/\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\">"
+                              @"<soapenv:Header>"
+                              @"<UsernameToken xmlns=\"http://siebel.com/webservices\">%@</UsernameToken>"
+                              @"<PasswordText xmlns=\"http://siebel.com/webservices\">%@</PasswordText>"
+                              @"</soapenv:Header>"
+                              @"<soapenv:Body>"
+                              @"<asi:SiebelEmployeeQueryByExample soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
+                              @"<SiebelMessage xsi:type=\"emp:ListOfEmployeeInterfaceTopElmt\" xmlns:emp=\"http://www.siebel.com/xml/Employee%%20Interface\">"
+                              @"<ListOfEmployeeInterface xsi:type=\"emp:ListOfEmployeeInterface\">"
+                              @"<Employee xsi:type=\"emp:ArrayOfEmployee\">"
+                              @"<LoginName xsi:type=\"ns0:string\">%@</LoginName>"
+                              @"<EmploymentStatus xsi:type=\"ns0:string\">ACTIVE</EmploymentStatus>"
+                              @"</Employee>"
+                              @"</ListOfEmployeeInterface>"
+                              @"</SiebelMessage>"
+                              @"</asi:SiebelEmployeeQueryByExample>"
+                              @"</soapenv:Body>"
+                              @"</soapenv:Envelope>",self.username.text,self.password.text,self.username.text];
+    
+    NSData *envelope = [envelopeText dataUsingEncoding:NSUTF8StringEncoding];
+    NSURL *theurl = [NSURL URLWithString:@"http://121.244.87.75:7777/eai_enu/start.swe?SWEExtSource=WebService&WSSOAP=1"];//Abhishek
+    
+    NSLog(@"URL IS %@",theurl);
+    NSLog(@"REQUEST IS %@",envelopeText);
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theurl cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:50];
+    NSString * msglength = [NSString stringWithFormat:@"%lu",(unsigned long)[envelopeText length]];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:envelope];
+    [request setValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:msglength forHTTPHeaderField:@"Content-Length"];
+    [[RequestDelegate alloc]initiateRequest:request name:@"authenticationRequest"];
+    
+}
+
+-(void)Authetication_Found:(NSNotification*)notification
+{
+    NSError *err;
+    NSString *response=[[notification userInfo]objectForKey:@"response"];
+    NSLog(@"\nResponse....%@",response);
+    
+    TBXML * tbxml = [TBXML newTBXMLWithXMLString:response error:&err];
+    
+    if ([response rangeOfString:@"SOAP-ENV:Fault"].location != NSNotFound )
+    {
+       // [self hideAlert];
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Something Went Wrong. Please try again later" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    
+    else{
+        AppDelegate* app_delegate=[[UIApplication sharedApplication] delegate];
+        //    //self.window = [[UIApplication sharedApplication] keyWindow];
+        //   // app_delegate.window.rootViewController= app_delegate.splitViewController;
+        //      [self.navigationController pushViewController:app_delegate.splitViewController animated:YES];
+        //
+        //    AppDelegate* app_delegate=[[UIApplication sharedApplication] delegate];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UISplitViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SplitView"];
+        //self.window = [[UIApplication sharedApplication] keyWindow];
+        app_delegate.window.rootViewController= vc;
+
+          NSLog(@"\nResponse....%@",response);
+        
+    }
+}
+
+
 @end

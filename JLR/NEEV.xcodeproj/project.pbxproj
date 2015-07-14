@@ -72,6 +72,9 @@
 		D9D108D81B51395D00271C1E /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D108D41B51395D00271C1E /* lock.png */; };
 		D9D108D91B51395D00271C1E /* lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D108D51B51395D00271C1E /* lock@2x.png */; };
 		D9D108DA1B51395D00271C1E /* mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D108D61B51395D00271C1E /* mail@2x.png */; };
+		D9E003F91B5518800061E3AE /* RequestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E003F81B5518800061E3AE /* RequestDelegate.m */; };
+		D9E003FF1B5519B00061E3AE /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E003FC1B5519B00061E3AE /* TBXML+HTTP.m */; };
+		D9E004001B5519B00061E3AE /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E003FE1B5519B00061E3AE /* TBXML.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +165,13 @@
 		D9D108D41B51395D00271C1E /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		D9D108D51B51395D00271C1E /* lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock@2x.png"; sourceTree = "<group>"; };
 		D9D108D61B51395D00271C1E /* mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail@2x.png"; sourceTree = "<group>"; };
+		D9E003F71B5518800061E3AE /* RequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestDelegate.h; sourceTree = "<group>"; };
+		D9E003F81B5518800061E3AE /* RequestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestDelegate.m; sourceTree = "<group>"; };
+		D9E003FA1B5519B00061E3AE /* TBXML+Compression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+Compression.h"; sourceTree = "<group>"; };
+		D9E003FB1B5519B00061E3AE /* TBXML+HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+HTTP.h"; sourceTree = "<group>"; };
+		D9E003FC1B5519B00061E3AE /* TBXML+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+HTTP.m"; sourceTree = "<group>"; };
+		D9E003FD1B5519B00061E3AE /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		D9E003FE1B5519B00061E3AE /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +192,9 @@
 		15B29A2516E8E01900772375 = {
 			isa = PBXGroup;
 			children = (
+				D9E004011B5519B80061E3AE /* TBXML */,
+				D9E003F71B5518800061E3AE /* RequestDelegate.h */,
+				D9E003F81B5518800061E3AE /* RequestDelegate.m */,
 				ADD78B741B51085B008AAF77 /* ManageOpprotunityTableViewCell.h */,
 				ADD78B751B51085B008AAF77 /* ManageOpprotunityTableViewCell.m */,
 				AD3540DC1AC5270200396A43 /* ActivitySearchViewController.h */,
@@ -361,6 +374,18 @@
 			name = Manage;
 			sourceTree = "<group>";
 		};
+		D9E004011B5519B80061E3AE /* TBXML */ = {
+			isa = PBXGroup;
+			children = (
+				D9E003FA1B5519B00061E3AE /* TBXML+Compression.h */,
+				D9E003FB1B5519B00061E3AE /* TBXML+HTTP.h */,
+				D9E003FC1B5519B00061E3AE /* TBXML+HTTP.m */,
+				D9E003FD1B5519B00061E3AE /* TBXML.h */,
+				D9E003FE1B5519B00061E3AE /* TBXML.m */,
+			);
+			name = TBXML;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -479,6 +504,7 @@
 				84DEB8331AA712CB0098AFF9 /* dashboardTodaysActivity_Cell_VC.m in Sources */,
 				15B29A5116E8E01900772375 /* MasterViewController.m in Sources */,
 				AD3540DE1AC5270200396A43 /* ActivitySearchViewController.m in Sources */,
+				D9E003FF1B5519B00061E3AE /* TBXML+HTTP.m in Sources */,
 				845BA7701AB84AD0006DFB9C /* ActivityDetailsViewController.m in Sources */,
 				ADE1162B1AC40DBD001DD729 /* CreateActivityViewController.m in Sources */,
 				845BA76D1AB8432F006DFB9C /* ActivityListViewController.m in Sources */,
@@ -488,6 +514,8 @@
 				15B29A5416E8E01900772375 /* DetailViewController.m in Sources */,
 				ADBB8A071ABBED3F0004CC8C /* ManageOpportunity.m in Sources */,
 				84D7646D1AA441A3008C1244 /* CreateOpportunityViewController.m in Sources */,
+				D9E003F91B5518800061E3AE /* RequestDelegate.m in Sources */,
+				D9E004001B5519B00061E3AE /* TBXML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

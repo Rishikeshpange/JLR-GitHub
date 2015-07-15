@@ -61,6 +61,11 @@ int *flag;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButtonItems];
     
+    AppDelegate* app_delegate=[[UIApplication sharedApplication] delegate];
+    NSLog(@"%@",app_delegate.Array1);
+   NSLog(@"%@", [[app_delegate.Array1 objectAtIndex:0] valueForKey:@"positionName"]);
+   // NSLog(@"%@", [[app_delegate.Array1 objectAtIndex:0] valueForKey:@"positionName"]);
+
     self.originalCenter = self.view.center;
     searchleadTxtfld.delegate=self;
     

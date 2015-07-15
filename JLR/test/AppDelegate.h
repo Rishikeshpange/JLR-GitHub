@@ -14,4 +14,6 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
 
+@property (nonatomic, retain) IBOutlet NSMutableArray *Array1;
+
 @end

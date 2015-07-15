@@ -12,6 +12,7 @@
 #import "TBXML.h"
 #import "SSKeychain.h"
 #import "SSKeychainQuery.h"
+#import "UserDetail.h"
 
 @interface LoginViewController ()
 {
@@ -39,6 +40,8 @@
     
   //  self.username.text=@"SJAIN_10102";
  //   self.password.text=@"HPY151NWYR";
+    
+    
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.username.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) cornerRadii:CGSizeMake(5.0, 5.0)];
      UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.password.bounds byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight) cornerRadii:CGSizeMake(5.0, 5.0)];
     
@@ -301,7 +304,65 @@
     
     else{
         AppDelegate* app_delegate=[[UIApplication sharedApplication] delegate];
-        //    //self.window = [[UIApplication sharedApplication] keyWindow];
+        app_delegate.Array1=[[NSMutableArray alloc]init];
+        UserDetail* user=[[UserDetail alloc] init];
+//        user.positionName=@"Rishi";
+//         user.positionId=@"25";
+        
+  //      [app_delegate.Array1 addObject:user];
+        
+       
+          
+        
+        TBXML * tbxml = [TBXML newTBXMLWithXMLString:response error:&err];
+        
+        TBXMLElement *soapBody = [TBXML childElementNamed:@"SOAP-ENV:Body" parentElement:tbxml.rootXMLElement];
+        TBXMLElement *container = [TBXML childElementNamed:@"rpc:SiebelEmployeeQueryByExampleResponse" parentElement:soapBody];
+        if(container)
+        {
+
+        TBXMLElement *SiebelMessage = [TBXML childElementNamed:@"SiebelMessage" parentElement:container];
+          TBXMLElement *ListOfEmployeeInterface = [TBXML childElementNamed:@"ListOfEmployeeInterface" parentElement:SiebelMessage];
+         TBXMLElement *Employee = [TBXML childElementNamed:@"Employee" parentElement:ListOfEmployeeInterface];
+         TBXMLElement *Employee1 = [TBXML childElementNamed:@"Employee" parentElement:Employee];
+            if (Employee1)
+            {
+                do {
+        TBXMLElement *ListOfRelatedPosition = [TBXML childElementNamed:@"ListOfRelatedPosition" parentElement:Employee1];
+         TBXMLElement *RelatedPosition = [TBXML childElementNamed:@"RelatedPosition" parentElement:ListOfRelatedPosition];
+        TBXMLElement *RelatedPosition1 = [TBXML childElementNamed:@"RelatedPosition" parentElement:RelatedPosition];
+        TBXMLElement *PositionId = [TBXML childElementNamed:@"PositionId" parentElement:RelatedPosition1];
+         TBXMLElement *Position = [TBXML childElementNamed:@"Position" parentElement:RelatedPosition1];
+                    
+                    user.positionName=[TBXML textForElement:Position];
+                    user.positionId=[TBXML textForElement:PositionId];
+                    
+                    NSLog(@"%@,%@",user.positionName,user.positionId);
+                    [app_delegate.Array1 addObject:user];
+
+       } while ((Employee1 = Employee1->nextSibling));
+            }
+        
+       /* if(container)
+        {
+            TBXMLElement *tuple =[TBXML childElementNamed:@"tuple" parentElement:container];
+            ///  NSLog(@"Tuple..%@",tuple);
+            if (tuple)
+            {
+                do {
+                    activityPending_list = nil;
+                    activityPending_list = [[ActivityPendingList alloc]init];
+                    
+                    
+                    TBXMLElement *table  = [TBXML childElementNamed:@"S_OPTY" parentElement:[TBXML childElementNamed:@"old" parentElement:tuple]];
+                    TBXMLElement *X_ACTIVITY_TYPE = [TBXML childElementNamed:@"ACTIVITY_TYPE" parentElement:table];
+                    //NSString *str_NAME = [TBXML textForElement:X_ACTIVITY_TYPE];
+                    activityPending_list.ACTIVITY_TYPE =[TBXML textForElement:X_ACTIVITY_TYPE];
+                }
+            }
+        }*/
+        
+        ////self.window = [[UIApplication sharedApplication] keyWindow];
         //   // app_delegate.window.rootViewController= app_delegate.splitViewController;
         //      [self.navigationController pushViewController:app_delegate.splitViewController animated:YES];
         //
@@ -315,7 +376,15 @@
           NSLog(@"\nResponse....%@",response);
         
     }
+       else
+       {
+        // [appdelegate hideAlert];
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Attention!" message:@"Server Error!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        }
+    }
 }
+
 - (IBAction)btnRemrmber:(id)sender {
     
     [SSKeychain setPassword:self.username.text forService:@"AnyService" account:@"AnyUser"];
